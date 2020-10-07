@@ -10,11 +10,13 @@ interface Props {
 	className?: string;
 }
 
-// gives a ramdom int between 0 and max
+// Helper function
+// it gives a ramdom int between 0 and max
 const getRandomInt = (max: number) => {
 	return Math.floor(Math.random() * Math.floor(max));
 };
 
+// Function that could be external
 const useNewName = (): { changeName: () => void; name: string; } => {
 	const someNames = useMemo(() => ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve', 'Franz'], []);
 	const [name, setName] = useState('');
@@ -27,6 +29,7 @@ const useNewName = (): { changeName: () => void; name: string; } => {
 	return { changeName, name };
 };
 
+// Main component
 const NameGen = ({ className }: Props) => {
 	const { name, changeName } = useNewName();
 
